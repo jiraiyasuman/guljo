@@ -16,6 +16,9 @@ public class AnalyticsDataAutoMapper {
 		analyticsData.setExitTime(analyticsDataDto.getExitTime());
 		analyticsData.setIpAddress(analyticsDataDto.getIpAddress());
 		analyticsData.setUserAgent(analyticsDataDto.getUserAgent());
+		analyticsData.setLatitude(analyticsDataDto.getLatitude());
+		analyticsData.setLocation(analyticsDataDto.getLocation());
+		analyticsData.setLongitude(analyticsDataDto.getLongitude());
 		return analyticsData;
 	}
 	
@@ -25,6 +28,9 @@ public class AnalyticsDataAutoMapper {
 		analyticsDataDto.setExitTime(analyticsData.getExitTime());
 		analyticsDataDto.setIpAddress(analyticsData.getIpAddress());
 		analyticsDataDto.setUserAgent(analyticsData.getUserAgent());
+		analyticsDataDto.setLatitude(analyticsData.getLatitude());
+		analyticsDataDto.setLocation(analyticsData.getLocation());
+		analyticsDataDto.setLongitude(analyticsData.getLongitude());
 		return analyticsDataDto;
 		
 		

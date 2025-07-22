@@ -11,39 +11,47 @@ import com.guljo.guljo.repository.AnalyticsDataRepository;
 import com.guljo.guljo.service.AnalyticsDataService;
 
 import jakarta.transaction.Transactional;
+
 @Service
-public class AnalyticsDataServiceImpl implements AnalyticsDataService{
+public class AnalyticsDataServiceImpl implements AnalyticsDataService {
 
 	private AnalyticsDataRepository analyticsDataRepository;
+
 	@Autowired
 	public AnalyticsDataServiceImpl(AnalyticsDataRepository analyticsDataRepository) {
-		super();
 		this.analyticsDataRepository = analyticsDataRepository;
 	}
 
 	@Transactional
 	@Override
-	public AnalyticsData saveEntry(String ip, String userAgent) {
+	public AnalyticsData saveEntry(String ip, String userAgent, Double latitude, Double longitude, String location) {
+		if (latitude == null || longitude == null) {
+			// Log warning and avoid saving corrupt data
+			System.err.println("Warning: latitude or longitude is null. Skipping analytics entry.");
+			return null; // or throw exception if this should never happen
+		}
+
 		AnalyticsData analyticsData = new AnalyticsData();
 		analyticsData.setIpAddress(ip);
 		analyticsData.setUserAgent(userAgent);
 		analyticsData.setEntryTime(LocalDateTime.now());
-		
-		return analyticsDataRepository.save(analyticsData);
-	}
+		analyticsData.setLatitude(latitude);
+		analyticsData.setLongitude(longitude);
+		analyticsData.setLocation(location);
+
+		return analyticsDataRepository.save(analyticsData);	}
 
 	@Transactional
 	@Override
 	public void saveExit(Long id) {
-		AnalyticsData analyticsData = analyticsDataRepository.findById(id).get();
-		if(analyticsData !=null && analyticsData.getExitTime() == null) {
-			LocalDateTime exitTime = LocalDateTime.now();
-			analyticsData.setExitTime(exitTime);
-			long duration = Duration.between(analyticsData.getEntryTime(), exitTime).getSeconds();
-			analyticsData.setDurationInSeconds(duration);
-			analyticsDataRepository.save(analyticsData);
-		}
-		
+		analyticsDataRepository.findById(id).ifPresent(analyticsData -> {
+			if (analyticsData.getExitTime() == null) {
+				LocalDateTime exitTime = LocalDateTime.now();
+				analyticsData.setExitTime(exitTime);
+				long duration = Duration.between(analyticsData.getEntryTime(), exitTime).getSeconds();
+				analyticsData.setDurationInSeconds(duration);
+				analyticsDataRepository.save(analyticsData);
+			}
+		});
 	}
-
 }

@@ -22,6 +22,12 @@ public class AnalyticsData {
 	private LocalDateTime exitTime;
 	@Column(name="duration_in_seconds")
 	private Long durationInSeconds;
+	@Column(name="location")
+	private String location;
+	@Column(name="latitude")
+	private double latitude;
+	@Column(name="longitude")
+	private double longitude;
 	public long getId() {
 		return id;
 	}
@@ -58,8 +64,26 @@ public class AnalyticsData {
 	public void setDurationInSeconds(Long durationInSeconds) {
 		this.durationInSeconds = durationInSeconds;
 	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public double getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+	public double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
 	public AnalyticsData(long id, String ipAddress, String userAgent, LocalDateTime entryTime, LocalDateTime exitTime,
-			Long durationInSeconds) {
+			Long durationInSeconds, String location, double latitude, double longitude) {
 		super();
 		this.id = id;
 		this.ipAddress = ipAddress;
@@ -67,6 +91,9 @@ public class AnalyticsData {
 		this.entryTime = entryTime;
 		this.exitTime = exitTime;
 		this.durationInSeconds = durationInSeconds;
+		this.location = location;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 	public AnalyticsData() {
 		super();
@@ -75,8 +102,8 @@ public class AnalyticsData {
 	@Override
 	public String toString() {
 		return "AnalyticsData [id=" + id + ", ipAddress=" + ipAddress + ", userAgent=" + userAgent + ", entryTime="
-				+ entryTime + ", exitTime=" + exitTime + ", durationInSeconds=" + durationInSeconds + "]";
+				+ entryTime + ", exitTime=" + exitTime + ", durationInSeconds=" + durationInSeconds + ", location="
+				+ location + ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
-	
-	
+		
 }

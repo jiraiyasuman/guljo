@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Guljo Home Page</title>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+	rel="stylesheet">
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+	<nav class="bg-gray-900 shadow-md fixed w-full z-50 h-20">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between items-center h-16">
+
+				<!-- Left: Logo -->
+				<div class="flex-shrink-0">
+					<a href="#" class="flex items-center"> <img
+						src="https://i.postimg.cc/pL6SmBLC/guljo.png" alt="Logo"
+						class="h-10 w-auto mr-2" />
+					</a>
+
+				</div>
+
+				<!-- Center: Nav Links -->
+				<div class="hidden md:flex items-center space-x-8">
+					<ol class="flex space-x-6 text-white font-medium">
+						<li><a th:href="@{/api/v1/home}" class="hover:text-white">Home</a></li>
+						<li><a th:href="'#'" class="hover:text-white">Services</a></li>
+						<li><a th:href="@{/api/v1/about}" class="hover:text-white">About
+								Us</a></li>
+						<li><a th:href="'#'" class="hover:text-white">Contact</a></li>
+					</ol>
+				</div>
+
+				<!-- Right: Register/Login -->
+				<div class="hidden md:flex items-center space-x-4">
+					<a th:href="'#'"
+						class="bg-blue-600 text-white px-4 py-1.5 rounded hover:bg-blue-700 font-medium">Login</a>
+				</div>
+
+				<!-- Mobile Menu Button -->
+				<div class="md:hidden flex items-center">
+					<button id="mobile-menu-btn"
+						class="text-gray-700 focus:outline-none">
+						<svg class="h-6 w-6" fill="none" stroke="currentColor"
+							viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round"
+								stroke-linejoin="round" stroke-width="2"
+								d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+					</button>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Mobile Menu -->
+		<div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+			<ol class="space-y-2 text-gray-700 font-medium">
+				<li><a th:href="@{/api/v1/home}"
+					class="block hover:text-blue-600">Home</a></li>
+				<li><a th:href="'#'" class="block hover:text-blue-600">Services</a></li>
+				<li><a th:href="'#'" class="block hover:text-blue-600">About
+						Us</a></li>
+				<li><a th:href="'#'" class="block hover:text-blue-600">Contact</a></li>
+			</ol>
+			<div class="mt-4 space-y-2">
+				<a th:href="'#'"
+					class="block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Login</a>
+			</div>
+		</div>
+	</nav>
+
+	<script>
+    const menuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+    });
+</script>
+	<style>
+.carousel-slide {
+	transition: transform 0.5s ease-in-out;
+}
+</style>
+<body class="bg-gray-100">
+	<div class="relative w-screen overflow-hidden pt-20">
+		<!-- Carousel Wrapper -->
+		<!-- Carousel Wrapper -->
+		<div id="carousel" class="flex w-full carousel-slide">
+			<!-- Slide 1 -->
+			<div class="min-w-full">
+				<img
+					src="https://i.postimg.cc/D0rJR58c/Whats-App-Image-2025-07-20-at-6-42-49-PM.jpg"
+					class="w-full h-[500px] object-cover" />
+			</div>
+			<!-- Slide 2 -->
+			<div class="min-w-full">
+				<img
+					src="https://i.postimg.cc/bJsPRQdm/Leonardo-Anime-XL-create-a-real-life-image-of-simple-microproc-3.jpg"
+					class="w-full h-[500px] object-cover" />
+			</div>
+			<!-- Slide 3 -->
+			<div class="min-w-full">
+				<img
+					src="https://i.postimg.cc/tJNBZcyw/Whats-App-Image-2025-07-21-at-7-10-27-PM.jpg"
+					class="w-full h-[500px] object-cover" />
+			</div>
+		</div>
+
+		<!-- Prev/Next Buttons -->
+		<button id="prevBtn"
+			class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100">
+			&#8592;</button>
+		<button id="nextBtn"
+			class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100">
+			&#8594;</button>
+
+	</div>
+
+	<script>
+    const carousel = document.getElementById('carousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const totalSlides = carousel.children.length;
+    let currentIndex = 0;
+
+    function updateCarousel() {
+        const offset = -currentIndex * 100;
+        carousel.style.transform = `translateX(${offset}%)`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    });
+
+    // Auto-slide (optional)
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+    }, 5000); // every 5 seconds
+</script>
+	<h2 class="text-2xl font-bold text-center mb-4">Courses Offered</h2>
+	<!-- Carousel Wrapper -->
+	<div class="relative w-full flex justify-center items-center py-10">
+
+		<!-- Left Button -->
+		<button id="scrollLeft"
+			class="absolute left-4 z-10 bg-white p-2 rounded-full shadow hover:bg-gray-200">
+			<span>&larr;</span>
+		</button>
+
+		<!-- Carousel Container -->
+		<div id="carousels"
+			class="flex overflow-x-auto space-x-4 scroll-smooth w-[90%]">
+			<!-- Card -->
+			<div
+				class="w-64 min-w-[16rem] bg-white rounded-lg shadow p-4 flex-shrink-0 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+
+				<img
+					src="https://i.postimg.cc/630pPZvk/Chat-GPT-Image-Jul-21-2025-07-21-10-PM.png"
+					class="w-full h-40 object-cover rounded" alt="Image">
+				<h2 class="text-lg font-semibold mt-2">Learn Python</h2>
+				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+			</div>
+
+			<!-- Repeat Cards -->
+			<div
+				class="w-64 min-w-[16rem] bg-white rounded-lg shadow p-4 flex-shrink-0 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+
+				<img
+					src="https://i.postimg.cc/rpTcLmMM/Chat-GPT-Image-Jul-21-2025-07-22-49-PM.png"
+					class="w-full h-40 object-cover rounded" alt="Image">
+				<h2 class="text-lg font-semibold mt-2">Learn Java</h2>
+				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+			</div>
+
+			<div
+				class="w-64 min-w-[16rem] bg-white rounded-lg shadow p-4 flex-shrink-0 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+
+				<img
+					src="https://i.postimg.cc/25TpR707/Chat-GPT-Image-Jul-21-2025-07-24-21-PM.png"
+					class="w-full h-40 object-cover rounded" alt="Image">
+				<h2 class="text-lg font-semibold mt-2">Learn C</h2>
+				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+			</div>
+
+			<div
+				class="w-64 min-w-[16rem] bg-white rounded-lg shadow p-4 flex-shrink-0 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+
+				<img
+					src="https://i.postimg.cc/Vkm1xvY1/Whats-App-Image-2025-07-21-at-9-42-08-PM.jpg"
+					class="w-full h-40 object-cover rounded" alt="Image">
+				<h2 class="text-lg font-semibold mt-2">Learn Robotics</h2>
+				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+			</div>
+
+			<div
+				class="w-64 min-w-[16rem] bg-white rounded-lg shadow p-4 flex-shrink-0 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+
+				<img
+					src="https://i.postimg.cc/bvdXP24X/Chat-GPT-Image-Jul-21-2025-07-27-31-PM.png"
+					class="w-full h-40 object-cover rounded" alt="Image">
+				<h2 class="text-lg font-semibold mt-2">Learn C++</h2>
+				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+			</div>
+
+			<div
+				class="w-64 min-w-[16rem] bg-white rounded-lg shadow p-4 flex-shrink-0 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+
+				<img
+					src="https://i.postimg.cc/JzGK4c7Q/Chat-GPT-Image-Jul-21-2025-09-49-46-PM.png"
+					class="w-full h-40 object-cover rounded" alt="Image">
+				<h2 class="text-lg font-semibold mt-2">Learn HTML5</h2>
+				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+			</div>
+
+			<div
+				class="w-64 min-w-[16rem] bg-white rounded-lg shadow p-4 flex-shrink-0 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+
+				<img
+					src="https://i.postimg.cc/QCjGRn3m/Chat-GPT-Image-Jul-21-2025-09-53-36-PM.png"
+					class="w-full h-40 object-cover rounded" alt="Image">
+				<h2 class="text-lg font-semibold mt-2">Learn CSS3</h2>
+				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+			</div>
+
+			<div
+				class="w-64 min-w-[16rem] bg-white rounded-lg shadow p-4 flex-shrink-0 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+
+				<img
+					src="https://i.postimg.cc/8kbjs2j1/Chat-GPT-Image-Jul-21-2025-09-59-55-PM.png"
+					class="w-full h-40 object-cover rounded" alt="Image">
+				<h2 class="text-lg font-semibold mt-2">Learn Bootstrap</h2>
+				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+			</div>
+
+			<div
+				class="w-64 min-w-[16rem] bg-white rounded-lg shadow p-4 flex-shrink-0 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+
+				<img
+					src="https://i.postimg.cc/xjFVs5Zv/Whats-App-Image-2025-07-21-at-10-04-43-PM.jpg"
+					class="w-full h-40 object-cover rounded" alt="Image">
+				<h2 class="text-lg font-semibold mt-2">Learn Embedded C</h2>
+				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+			</div>
+
+		</div>
+		<!-- Right Button -->
+		<button id="scrollRight"
+			class="absolute right-4 z-10 bg-white p-2 rounded-full shadow hover:bg-gray-200">
+			<span>&rarr;</span>
+		</button>
+	</div>
+
+	<!-- jQuery Logic -->
+	<script>
+    $(document).ready(function () {
+      const scrollAmount = 300;
+
+      $('#scrollLeft').click(function () {
+        $('#carousels').animate({ scrollLeft: '-=' + scrollAmount }, 500);
+      });
+
+      $('#scrollRight').click(function () {
+        $('#carousels').animate({ scrollLeft: '+=' + scrollAmount }, 500);
+      });
+    });
+  </script>
+	<script>
+    // Called on page load
+    window.onload = function () {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            const location = "Unknown"; // You can add reverse geocoding later if needed
+
+            // Dummy GET request to any valid endpoint (your Filter captures it)
+            fetch(`/api/v1/track?latitude=${latitude}&longitude=${longitude}&location=${location}`)
+              .catch(err => console.error("Tracking request failed:", err));
+          },
+          function (error) {
+            console.warn("Location access denied or unavailable:", error.message);
+
+            // Send fallback request without lat/lon
+            fetch(`/api/v1/track`)
+              .catch(err => console.error("Fallback request failed:", err));
+          }
+        );
+      } else {
+        console.warn("Geolocation not supported");
+        fetch(`/api/v1/track`)
+          .catch(err => console.error("Request failed:", err));
+      }
+    };
+  </script>
+	<div class="flex flex-wrap justify-center gap-6 px-4 py-8 bg-gray-100">
+		<!-- Card 1 -->
+		<div
+			class="max-w-sm w-full rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out">
+
+			<!-- Image Container -->
+			<div class="w-full h-64 bg-gray-200">
+				<img class="w-full h-full object-contain"
+					src="https://i.postimg.cc/44jHw9h2/Whats-App-Image-2025-07-22-at-7-38-11-AM.jpg"
+					alt="Full Fit Image">
+			</div>
+
+			<!-- Card Body -->
+			<div class="px-6 py-4 text-center">
+				<h2 class="text-xl font-bold mb-2 text-gray-800">Siddana</h2>
+				<p class="text-gray-600">Founder</p>
+				<p class="text-gray-700 text-sm mt-1">Experience in Robotic and
+					Electronic Communication</p>
+			</div>
+
+		</div>
+
+		<!-- Card 2 -->
+		<div
+			class="max-w-sm w-full rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out">
+
+			<!-- Image Container -->
+			<div class="w-full h-64 bg-gray-200">
+				<img class="w-full h-full object-contain"
+					src="https://i.postimg.cc/xTdMF2sq/Whats-App-Image-2025-07-22-at-7-38-11-AM-1.jpg"
+					alt="Full Fit Image">
+			</div>
+
+			<!-- Card Body -->
+			<div class="px-6 py-4 text-center">
+				<h2 class="text-xl font-bold mb-2 text-gray-800">Joshua</h2>
+				<p class="text-gray-600">Managing Director</p>
+				<p class="text-gray-700 text-sm mt-1">Experience in Computer Science and Engineering</p>
+			</div>
+
+		</div>
+
+		<!-- Card 3 -->
+		<div
+			class="max-w-sm w-full rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out">
+
+			<!-- Image Container -->
+			<div class="w-full h-64 bg-gray-200">
+				<img class="w-full h-full object-contain"
+					src="https://i.postimg.cc/T36Lvv0r/Whats-App-Image-2025-07-22-at-8-05-08-AM.jpg"
+					alt="Full Fit Image">
+			</div>
+
+			<!-- Card Body -->
+			<div class="px-6 py-4 text-center">
+				<h2 class="text-xl font-bold mb-2 text-gray-800">Vishal Rathod</h2>
+				<p class="text-gray-600">Chief Executive Officer</p>
+				<p class="text-gray-700 text-sm mt-1">Experience in
+					Electronics and Communication</p>
+			</div>
+
+		</div>
+	</div>
+	<footer class="bg-gray-900 text-white py-10">
+		<div
+			class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+
+			<!-- Column 1: Logo + Description -->
+			<div>
+				<h2 class="text-2xl font-bold mb-3">RideNow</h2>
+				<p class="text-gray-400 text-sm">Your trusted partner for quick
+					and safe taxi services around the city.</p>
+			</div>
+
+			<!-- Column 2: Useful Links -->
+			<div>
+				<h3 class="text-xl font-semibold mb-3">Quick Links</h3>
+				<ul class="space-y-2 text-gray-300">
+					<li><a th:href="@{api/v1/home}" class="hover:text-white">Home</a></li>
+					<li><a th:href="'#'" class="hover:text-white">Services</a></li>
+					<li><a th:href="@{/api/v1/about}" class="hover:text-white">About
+							Us</a></li>
+					<li><a th:href="'#'" class="hover:text-white">Contact</a></li>
+				</ul>
+			</div>
+
+			<!-- Column 3: Contact Info -->
+			<div>
+				<h3 class="text-xl font-semibold mb-3">Contact Us</h3>
+				<p class="text-gray-300 text-sm">Bangalore, Karnataka</p>
+				<p class="text-gray-300 text-sm">+91 7975733928</p>
+				<p class="text-gray-300 text-sm">guljocare@gmail.com</p>
+			</div>
+		</div>
+
+		<!-- Bottom Bar -->
+		<div
+			class="mt-10 border-t border-gray-700 pt-4 text-center text-sm text-gray-400">
+			&copy; <span id="year">© Suman Talukdar</span> Guljo. All rights
+			reserved.
+		</div>
+	</footer>
+</body>
+</html>

@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Column;
 
 public class AnalyticsDataDto {
 
@@ -18,6 +19,12 @@ public class AnalyticsDataDto {
     private LocalDateTime exitTime;
 	@Schema
     private Long durationInSeconds;
+	@Schema
+	private String location;
+	@Schema
+	private double latitude;
+	@Schema
+	private double longitude;
 	public String getIpAddress() {
 		return ipAddress;
 	}
@@ -48,14 +55,35 @@ public class AnalyticsDataDto {
 	public void setDurationInSeconds(Long durationInSeconds) {
 		this.durationInSeconds = durationInSeconds;
 	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public double getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+	public double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
 	public AnalyticsDataDto(String ipAddress, String userAgent, LocalDateTime entryTime, LocalDateTime exitTime,
-			Long durationInSeconds) {
+			Long durationInSeconds, String location, double latitude, double longitude) {
 		super();
 		this.ipAddress = ipAddress;
 		this.userAgent = userAgent;
 		this.entryTime = entryTime;
 		this.exitTime = exitTime;
 		this.durationInSeconds = durationInSeconds;
+		this.location = location;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 	public AnalyticsDataDto() {
 		super();
@@ -64,6 +92,9 @@ public class AnalyticsDataDto {
 	@Override
 	public String toString() {
 		return "AnalyticsDataDto [ipAddress=" + ipAddress + ", userAgent=" + userAgent + ", entryTime=" + entryTime
-				+ ", exitTime=" + exitTime + ", durationInSeconds=" + durationInSeconds + "]";
+				+ ", exitTime=" + exitTime + ", durationInSeconds=" + durationInSeconds + ", location=" + location
+				+ ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
-}
+	
+	
+	}
