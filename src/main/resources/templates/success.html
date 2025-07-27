@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Guljo Home Page</title>
@@ -14,7 +14,8 @@
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<div class="flex-grow">
 	<nav class="bg-gray-900 shadow-md fixed w-full z-50 h-20">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex justify-between items-center h-16">
@@ -33,7 +34,8 @@
 					<ol class="flex space-x-6 text-white font-medium">
 						<li><a th:href="@{/api/v1/home}" class="hover:text-white">Home</a></li>
 						<li><a th:href="@{/api/v1/service}" class="hover:text-white">Services</a></li>
-						<li><a th:href="@{/api/v1/about}" class="hover:text-white">About Us</a></li>
+						<li><a th:href="@{/api/v1/about}" class="hover:text-white">About
+								Us</a></li>
 						<li><a th:href="@{/api/v1/contact}" class="hover:text-white">Contact</a></li>
 					</ol>
 				</div>
@@ -76,7 +78,16 @@
 			</div>
 		</div>
 	</nav>
-
+	<!-- Main Content -->
+	<main class="pt-32 pb-10"> <!-- Add padding-top to account for fixed navbar -->
+		<!-- Success Message -->
+		<div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mx-auto max-w-4xl shadow">
+			<span class="block sm:inline">
+				Email has been successfully sent in your registered email id
+				<a th:href="@{/api/v1/forgotPassword}" class="underline text-blue-700 hover:text-blue-900 font-medium">Click here!</a>.
+			</span>
+		</div>
+	</main>
 	<script>
     const menuBtn = document.getElementById("mobile-menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -85,56 +96,16 @@
         mobileMenu.classList.toggle("hidden");
     });
 </script>
-<section class="py-12 px-6 max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold mb-4">About Us</h2>
-    <p class="text-gray-700 leading-relaxed">
-       <b> Guljo Engineering Solution</b><br>
-
-Empowering Innovation Through Education, Electronics & Robotics
-
-At Guljo Engineering Solution, we are passionate about shaping the future of technology by bridging the gap between learning and real-world application. We offer a unique blend of educational courses, electronic components, and custom robotics solutions, making us a one-stop destination for students, hobbyists, and tech enthusiasts.
-
-What We Offer?
-<br>
-<b>Tech Courses Tailored for You</b><br>
-Master the most in-demand programming languages with our beginner-friendly to advanced-level courses, including:<br>
-
-<b>Python</b> – For data science, automation, and web development<br>
-
-<b>Java</b> – For software development, Android apps, and enterprise systems<br>
-
-Plus many more tech-focused courses, crafted by experienced instructors.
-
-<br>
-<b> Electronic Components Store</b><br>
-From basic sensors to advanced microcontrollers, we provide high-quality electronic components and kits at affordable prices. Ideal for DIY projects, student experiments, and industrial prototyping.
-<br>
-<b>Custom Robotic Projects</b><br>
-Need help building your robot? We design and develop custom robotic projects for academic submissions, industrial use-cases, and personal innovation. Whether it's line-following robots, IoT-based automation, or advanced AI bots – we bring your ideas to life.
-
-
----<br>
-
-<b>Why Choose Guljo?</b><br>
-
-<i>Practical Learning with Hands-on Support</i>
-<i> Affordable, Quality Components</i>
-<i> Expert Guidance in Project Development</i>
-<i>Innovation-driven Approach</i>
-
-Join the Guljo Engineering Solution community and start your journey toward becoming a skilled programmer, innovative maker, and future engineer.
-<br>
-<i>📞 Contact us today or visit our website to learn more!</i>
-</p>
-</section>
-<footer class="bg-gray-900 text-white py-10">
+</div>
+	<footer class="bg-gray-900 text-white py-10">
 		<div
 			class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
 
 			<!-- Column 1: Logo + Description -->
 			<div>
 				<h2 class="text-2xl font-bold mb-3">Guljo</h2>
-				<p class="text-gray-400 text-sm">Your trusted online Teaching lessons</p>
+				<p class="text-gray-400 text-sm">Your trusted online Teaching
+					lessons</p>
 			</div>
 
 			<!-- Column 2: Useful Links -->
@@ -143,8 +114,9 @@ Join the Guljo Engineering Solution community and start your journey toward beco
 				<ul class="space-y-2 text-gray-300">
 					<li><a th:href="@{api/v1/home}" class="hover:text-white">Home</a></li>
 					<li><a th:href="@{/api/v1/service}" class="hover:text-white">Services</a></li>
-					<li><a th:href="@{/api/v1/about}" class="hover:text-white">About Us</a></li>
-					<li><a th:href="'#'" class="hover:text-white">Contact</a></li>
+					<li><a th:href="@{/api/v1/about}" class="hover:text-white">About
+							Us</a></li>
+					<li><a th:href="@{/api/v1/contact}" class="hover:text-white">Contact</a></li>
 				</ul>
 			</div>
 
@@ -160,8 +132,7 @@ Join the Guljo Engineering Solution community and start your journey toward beco
 		<!-- Bottom Bar -->
 		<div
 			class="mt-10 border-t border-gray-700 pt-4 text-center text-sm text-gray-400">
-			 <span id="year">© Suman Talukdar</span> Guljo. All rights
-			reserved.
+			<span id="year">© Suman Talukdar</span> Guljo. All rights reserved.
 		</div>
 	</footer>
 </body>

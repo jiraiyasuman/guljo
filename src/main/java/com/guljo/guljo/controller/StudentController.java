@@ -48,9 +48,9 @@ public class StudentController {
 	public ResponseEntity<Map<String,Object>> getAll(){
 		return findPaginated(1,"name","asc");
 	}
-	@GetMapping("list/page/{pageNo}")
+	@GetMapping("list/page/{pageNumber}")
 	public ResponseEntity<Map<String,Object>> findPaginated(
-			@PathVariable("pageNo") int pageNo,
+			@PathVariable("pageNumber") int pageNo,
 			@RequestParam("sortField") String sortField,
 			@RequestParam("sortDir") String sortDir
 			){

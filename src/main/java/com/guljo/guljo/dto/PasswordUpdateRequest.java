@@ -5,27 +5,19 @@ import org.antlr.v4.runtime.misc.NotNull;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 
-public class LoginDto {
+public class PasswordUpdateRequest {
 
-	@Schema@Email@NotNull
+	@Email@Schema@NotNull
 	private String email;
-	@Schema@NotNull
-	private String name;
 	@Schema@NotNull
 	private String password;
 	@Schema@NotNull
-	private long mobile;
+	private String confirmPassword;
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public String getPassword() {
 		return password;
@@ -33,22 +25,26 @@ public class LoginDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public long getMobile() {
-		return mobile;
+	public String getConfirmPassword() {
+		return confirmPassword;
 	}
-	public void setMobile(long mobile) {
-		this.mobile = mobile;
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
-	public LoginDto(@Email String email, String name, String password, long mobile) {
+	public PasswordUpdateRequest(@Email String email, String password, String confirmPassword) {
 		super();
 		this.email = email;
-		this.name = name;
 		this.password = password;
-		this.mobile = mobile;
+		this.confirmPassword = confirmPassword;
 	}
-	public LoginDto() {
+	public PasswordUpdateRequest() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+	@Override
+	public String toString() {
+		return "PasswordUpdateRequest [email=" + email + ", password=" + password + ", confirmPassword="
+				+ confirmPassword + "]";
+	}
+		
 }

@@ -6,4 +6,5 @@ import com.guljo.guljo.entity.Login;
 
 public interface LoginRepository extends JpaRepository<Login, Integer>{
 
+	Login findByEmail(String email);
 }

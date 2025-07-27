@@ -68,7 +68,7 @@
 				<li><a th:href="'#'" class="block hover:text-blue-600">Services</a></li>
 				<li><a th:href="'#'" class="block hover:text-blue-600">About
 						Us</a></li>
-				<li><a th:href="'#'" class="block hover:text-blue-600">Contact</a></li>
+				<li><a th:href="@{/api/v1/contact}" class="block hover:text-blue-600">Contact</a></li>
 			</ol>
 			<div class="mt-4 space-y-2">
 				<a th:href="'#'"
@@ -85,48 +85,75 @@
         mobileMenu.classList.toggle("hidden");
     });
 </script>
-<section class="py-12 px-6 max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold mb-4">About Us</h2>
-    <p class="text-gray-700 leading-relaxed">
-       <b> Guljo Engineering Solution</b><br>
+<!-- Grid Container -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+    <!-- Card Template -->
+    <div
+      class="card max-w-xs rounded-2xl overflow-hidden shadow-lg bg-white transition-transform transform hover:scale-105 hover:shadow-2xl cursor-pointer"
+      onclick="openModal('https://source.unsplash.com/random/400x300?sig=1', 'Card Header 1', 'This is the description for card 1.')"
+    >
+      <img class="w-full h-48 object-cover" src="https://source.unsplash.com/random/400x300?sig=1" alt="Card 1">
+      <div class="p-4">
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">Card Header 1</h2>
+        <p class="text-gray-600 text-sm">This is the description for card 1.</p>
+      </div>
+    </div>
 
-Empowering Innovation Through Education, Electronics & Robotics
+    <div
+      class="card max-w-xs rounded-2xl overflow-hidden shadow-lg bg-white transition-transform transform hover:scale-105 hover:shadow-2xl cursor-pointer"
+      onclick="openModal('https://source.unsplash.com/random/400x300?sig=2', 'Card Header 2', 'This is the description for card 2.')"
+    >
+      <img class="w-full h-48 object-cover" src="https://source.unsplash.com/random/400x300?sig=2" alt="Card 2">
+      <div class="p-4">
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">Card Header 2</h2>
+        <p class="text-gray-600 text-sm">This is the description for card 2.</p>
+      </div>
+    </div>
 
-At Guljo Engineering Solution, we are passionate about shaping the future of technology by bridging the gap between learning and real-world application. We offer a unique blend of educational courses, electronic components, and custom robotics solutions, making us a one-stop destination for students, hobbyists, and tech enthusiasts.
+    <div
+      class="card max-w-xs rounded-2xl overflow-hidden shadow-lg bg-white transition-transform transform hover:scale-105 hover:shadow-2xl cursor-pointer"
+      onclick="openModal('https://source.unsplash.com/random/400x300?sig=3', 'Card Header 3', 'This is the description for card 3.')"
+    >
+      <img class="w-full h-48 object-cover" src="https://source.unsplash.com/random/400x300?sig=3" alt="Card 3">
+      <div class="p-4">
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">Card Header 3</h2>
+        <p class="text-gray-600 text-sm">This is the description for card 3.</p>
+      </div>
+    </div>
+  </div>
 
-What We Offer?
-<br>
-<b>Tech Courses Tailored for You</b><br>
-Master the most in-demand programming languages with our beginner-friendly to advanced-level courses, including:<br>
+  <!-- Modal -->
+  <div id="cardModal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-2xl w-11/12 max-w-md shadow-xl relative p-4">
+      <button class="absolute top-2 right-2 text-gray-600 hover:text-black text-xl" onclick="closeModal()">&times;</button>
+      <img id="modalImage" class="w-full h-56 object-cover rounded-lg" src="" alt="Modal Image">
+      <h2 id="modalTitle" class="text-2xl font-bold text-gray-800 mt-4"></h2>
+      <p id="modalDescription" class="text-gray-600 mt-2 text-sm"></p>
+    </div>
+  </div>
 
-<b>Python</b> – For data science, automation, and web development<br>
+  <!-- JavaScript -->
+  <script>
+    function openModal(imageUrl, title, description) {
+      document.getElementById("modalImage").src = imageUrl;
+      document.getElementById("modalTitle").textContent = title;
+      document.getElementById("modalDescription").textContent = description;
+      document.getElementById("cardModal").classList.remove("hidden");
+    }
 
-<b>Java</b> – For software development, Android apps, and enterprise systems<br>
+    function closeModal() {
+      document.getElementById("cardModal").classList.add("hidden");
+    }
 
-Plus many more tech-focused courses, crafted by experienced instructors.
+    // Optional: Close modal on ESC or backdrop click
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+    document.getElementById("cardModal").addEventListener("click", (e) => {
+      if (e.target.id === "cardModal") closeModal();
+    });
+  </script>
 
-<br>
-<b> Electronic Components Store</b><br>
-From basic sensors to advanced microcontrollers, we provide high-quality electronic components and kits at affordable prices. Ideal for DIY projects, student experiments, and industrial prototyping.
-<br>
-<b>Custom Robotic Projects</b><br>
-Need help building your robot? We design and develop custom robotic projects for academic submissions, industrial use-cases, and personal innovation. Whether it's line-following robots, IoT-based automation, or advanced AI bots – we bring your ideas to life.
-
-
----<br>
-
-<b>Why Choose Guljo?</b><br>
-
-<i>Practical Learning with Hands-on Support</i>
-<i> Affordable, Quality Components</i>
-<i> Expert Guidance in Project Development</i>
-<i>Innovation-driven Approach</i>
-
-Join the Guljo Engineering Solution community and start your journey toward becoming a skilled programmer, innovative maker, and future engineer.
-<br>
-<i>📞 Contact us today or visit our website to learn more!</i>
-</p>
-</section>
 <footer class="bg-gray-900 text-white py-10">
 		<div
 			class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -144,7 +171,7 @@ Join the Guljo Engineering Solution community and start your journey toward beco
 					<li><a th:href="@{api/v1/home}" class="hover:text-white">Home</a></li>
 					<li><a th:href="@{/api/v1/service}" class="hover:text-white">Services</a></li>
 					<li><a th:href="@{/api/v1/about}" class="hover:text-white">About Us</a></li>
-					<li><a th:href="'#'" class="hover:text-white">Contact</a></li>
+					<li><a th:href="@{/api/v1/contact}" class="hover:text-white">Contact</a></li>
 				</ul>
 			</div>
 

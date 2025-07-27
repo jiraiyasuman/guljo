@@ -32,16 +32,16 @@
 				<div class="hidden md:flex items-center space-x-8">
 					<ol class="flex space-x-6 text-white font-medium">
 						<li><a th:href="@{/api/v1/home}" class="hover:text-white">Home</a></li>
-						<li><a th:href="'#'" class="hover:text-white">Services</a></li>
+						<li><a th:href="@{/api/v1/service}" class="hover:text-white">Services</a></li>
 						<li><a th:href="@{/api/v1/about}" class="hover:text-white">About
 								Us</a></li>
-						<li><a th:href="'#'" class="hover:text-white">Contact</a></li>
+						<li><a th:href="@{/api/v1/contact}" class="hover:text-white">Contact</a></li>
 					</ol>
 				</div>
 
 				<!-- Right: Register/Login -->
 				<div class="hidden md:flex items-center space-x-4">
-					<a th:href="'#'"
+					<a th:href="@{/api/v1/login}"
 						class="bg-blue-600 text-white px-4 py-1.5 rounded hover:bg-blue-700 font-medium">Login</a>
 				</div>
 
@@ -91,7 +91,6 @@
 	transition: transform 0.5s ease-in-out;
 }
 </style>
-<body class="bg-gray-100">
 	<div class="relative w-screen overflow-hidden pt-20">
 		<!-- Carousel Wrapper -->
 		<!-- Carousel Wrapper -->
@@ -175,7 +174,7 @@
 					src="https://i.postimg.cc/630pPZvk/Chat-GPT-Image-Jul-21-2025-07-21-10-PM.png"
 					class="w-full h-40 object-cover rounded" alt="Image">
 				<h2 class="text-lg font-semibold mt-2">Learn Python</h2>
-				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+				<a th:href="@{/api/v1/courses-add}" class="text-blue-600 text-sm">Enroll Now</a>
 			</div>
 
 			<!-- Repeat Cards -->
@@ -186,7 +185,7 @@
 					src="https://i.postimg.cc/rpTcLmMM/Chat-GPT-Image-Jul-21-2025-07-22-49-PM.png"
 					class="w-full h-40 object-cover rounded" alt="Image">
 				<h2 class="text-lg font-semibold mt-2">Learn Java</h2>
-				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+				<a th:href="@{/api/v1/courses-add}" class="text-blue-600 text-sm">Enroll Now</a>
 			</div>
 
 			<div
@@ -196,7 +195,7 @@
 					src="https://i.postimg.cc/25TpR707/Chat-GPT-Image-Jul-21-2025-07-24-21-PM.png"
 					class="w-full h-40 object-cover rounded" alt="Image">
 				<h2 class="text-lg font-semibold mt-2">Learn C</h2>
-				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+				<a th:href="@{/api/v1/courses-add}" class="text-blue-600 text-sm">Enroll Now</a>
 			</div>
 
 			<div
@@ -206,7 +205,7 @@
 					src="https://i.postimg.cc/Vkm1xvY1/Whats-App-Image-2025-07-21-at-9-42-08-PM.jpg"
 					class="w-full h-40 object-cover rounded" alt="Image">
 				<h2 class="text-lg font-semibold mt-2">Learn Robotics</h2>
-				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+				<a th:href="@{/api/v1/courses-add}" class="text-blue-600 text-sm">Enroll Now</a>
 			</div>
 
 			<div
@@ -216,7 +215,7 @@
 					src="https://i.postimg.cc/bvdXP24X/Chat-GPT-Image-Jul-21-2025-07-27-31-PM.png"
 					class="w-full h-40 object-cover rounded" alt="Image">
 				<h2 class="text-lg font-semibold mt-2">Learn C++</h2>
-				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+				<a th:href="@{/api/v1/courses-add}" class="text-blue-600 text-sm">Enroll Now</a>
 			</div>
 
 			<div
@@ -226,7 +225,7 @@
 					src="https://i.postimg.cc/JzGK4c7Q/Chat-GPT-Image-Jul-21-2025-09-49-46-PM.png"
 					class="w-full h-40 object-cover rounded" alt="Image">
 				<h2 class="text-lg font-semibold mt-2">Learn HTML5</h2>
-				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+				<a th:href="@{/api/v1/courses-add}" class="text-blue-600 text-sm">Enroll Now</a>
 			</div>
 
 			<div
@@ -236,7 +235,7 @@
 					src="https://i.postimg.cc/QCjGRn3m/Chat-GPT-Image-Jul-21-2025-09-53-36-PM.png"
 					class="w-full h-40 object-cover rounded" alt="Image">
 				<h2 class="text-lg font-semibold mt-2">Learn CSS3</h2>
-				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+				<a th:href="@{/api/v1/courses-add}" class="text-blue-600 text-sm">Enroll Now</a>
 			</div>
 
 			<div
@@ -246,7 +245,7 @@
 					src="https://i.postimg.cc/8kbjs2j1/Chat-GPT-Image-Jul-21-2025-09-59-55-PM.png"
 					class="w-full h-40 object-cover rounded" alt="Image">
 				<h2 class="text-lg font-semibold mt-2">Learn Bootstrap</h2>
-				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+				<a th:href="@{/api/v1/courses-add}" class="text-blue-600 text-sm">Enroll Now</a>
 			</div>
 
 			<div
@@ -256,7 +255,7 @@
 					src="https://i.postimg.cc/xjFVs5Zv/Whats-App-Image-2025-07-21-at-10-04-43-PM.jpg"
 					class="w-full h-40 object-cover rounded" alt="Image">
 				<h2 class="text-lg font-semibold mt-2">Learn Embedded C</h2>
-				<a th:href="'#'" class="text-blue-600 text-sm">Enroll Now</a>
+				<a th:href="@{/api/v1/courses-add}" class="text-blue-600 text-sm">Enroll Now</a>
 			</div>
 
 		</div>
@@ -380,9 +379,8 @@
 
 			<!-- Column 1: Logo + Description -->
 			<div>
-				<h2 class="text-2xl font-bold mb-3">RideNow</h2>
-				<p class="text-gray-400 text-sm">Your trusted partner for quick
-					and safe taxi services around the city.</p>
+				<h2 class="text-2xl font-bold mb-3">Guljo</h2>
+				<p class="text-gray-400 text-sm">Your trusted online Teaching lessons</p>
 			</div>
 
 			<!-- Column 2: Useful Links -->
@@ -390,10 +388,10 @@
 				<h3 class="text-xl font-semibold mb-3">Quick Links</h3>
 				<ul class="space-y-2 text-gray-300">
 					<li><a th:href="@{api/v1/home}" class="hover:text-white">Home</a></li>
-					<li><a th:href="'#'" class="hover:text-white">Services</a></li>
+					<li><a th:href="@{/api/v1/service}" class="hover:text-white">Services</a></li>
 					<li><a th:href="@{/api/v1/about}" class="hover:text-white">About
 							Us</a></li>
-					<li><a th:href="'#'" class="hover:text-white">Contact</a></li>
+					<li><a th:href="@{/api/v1/contact}" class="hover:text-white">Contact</a></li>
 				</ul>
 			</div>
 
@@ -409,7 +407,7 @@
 		<!-- Bottom Bar -->
 		<div
 			class="mt-10 border-t border-gray-700 pt-4 text-center text-sm text-gray-400">
-			&copy; <span id="year">© Suman Talukdar</span> Guljo. All rights
+			<span id="year">© Suman Talukdar</span> Guljo. All rights
 			reserved.
 		</div>
 	</footer>

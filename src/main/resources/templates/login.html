@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Guljo Home Page</title>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+	rel="stylesheet">
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+	<nav class="bg-gray-900 shadow-md fixed w-full z-50 h-20">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between items-center h-16">
+
+				<!-- Left: Logo -->
+				<div class="flex-shrink-0">
+					<a href="#" class="flex items-center"> <img
+						src="https://i.postimg.cc/pL6SmBLC/guljo.png" alt="Logo"
+						class="h-10 w-auto mr-2" />
+					</a>
+
+				</div>
+
+				<!-- Center: Nav Links -->
+				<div class="hidden md:flex items-center space-x-8">
+					<ol class="flex space-x-6 text-white font-medium">
+						<li><a th:href="@{/api/v1/home}" class="hover:text-white">Home</a></li>
+						<li><a th:href="@{/api/v1/service}" class="hover:text-white">Services</a></li>
+						<li><a th:href="@{/api/v1/about}" class="hover:text-white">About
+								Us</a></li>
+						<li><a th:href="@{/api/v1/contact}" class="hover:text-white">Contact</a></li>
+					</ol>
+				</div>
+
+				<!-- Right: Register/Login -->
+				<div class="hidden md:flex items-center space-x-4">
+					<a th:href="@{/api/v1/login}"
+						class="bg-blue-600 text-white px-4 py-1.5 rounded hover:bg-blue-700 font-medium">Login</a>
+				</div>
+
+				<!-- Mobile Menu Button -->
+				<div class="md:hidden flex items-center">
+					<button id="mobile-menu-btn"
+						class="text-gray-700 focus:outline-none">
+						<svg class="h-6 w-6" fill="none" stroke="currentColor"
+							viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round"
+								stroke-linejoin="round" stroke-width="2"
+								d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+					</button>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Mobile Menu -->
+		<div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+			<ol class="space-y-2 text-gray-700 font-medium">
+				<li><a th:href="@{/api/v1/home}"
+					class="block hover:text-blue-600">Home</a></li>
+				<li><a th:href="'#'" class="block hover:text-blue-600">Services</a></li>
+				<li><a th:href="'#'" class="block hover:text-blue-600">About
+						Us</a></li>
+				<li><a th:href="'#'" class="block hover:text-blue-600">Contact</a></li>
+			</ol>
+			<div class="mt-4 space-y-2">
+				<a th:href="'#'"
+					class="block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Login</a>
+			</div>
+		</div>
+	</nav>
+
+	<script>
+    const menuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+    });
+</script>
+
+<!-- Wrapper to center content both horizontally and vertically -->
+  <!-- Centering Wrapper -->
+<div class="flex items-center justify-center min-h-screen pt-20">
+  <div class="flex w-full max-w-5xl bg-white rounded-xl shadow-lg overflow-hidden">
+    <!-- Left Image -->
+    <div class="w-1/2 hidden md:block">
+      <img src="https://i.postimg.cc/Bb0v3mnb/Leonardo-Anime-XL-create-a-real-life-image-of-login-0.jpg" alt="Login Image" class="h-full w-full object-cover">
+    </div>
+
+    <!-- Right Form -->
+    <div class="w-full md:w-1/2 p-8 md:p-10 flex flex-col justify-center bg-white">
+      <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
+      <form id="loginForm">
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 font-medium">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter email"
+                 class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <p id="emailError" class="text-red-500 text-sm hidden">Please enter a valid email.</p>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700 font-medium">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter password"
+                 class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <p id="passwordError" class="text-red-500 text-sm hidden">Password is required.</p>
+        </div>
+
+        <p id="backendError" class="text-red-600 text-sm mb-2 hidden"></p>
+        <p id="successMessage" class="text-green-600 text-sm mb-2 hidden"></p>
+
+        <button type="submit"
+                class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition">Login</button>
+      </form>
+
+      <div class="text-right mt-4">
+        <a th:href="@{/api/v1/forgot}" class="text-sm text-blue-500 hover:underline">Forgot Password?</a>
+      </div>
+      <div class="text-right mt-4">
+        <a th:href="@{/api/v1/unlock}" class="text-sm text-blue-500 hover:underline">Id Locked?</a>
+      </div>
+    </div>
+
+  </div>
+  </div>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      document.getElementById("emailError").classList.add("hidden");
+      document.getElementById("passwordError").classList.add("hidden");
+      document.getElementById("backendError").classList.add("hidden");
+      document.getElementById("successMessage").classList.add("hidden");
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      let hasError = false;
+
+      if (!email || !/\S+@\S+\.\S+/.test(email)) {
+        document.getElementById("emailError").classList.remove("hidden");
+        hasError = true;
+      }
+
+      if (!password) {
+        document.getElementById("passwordError").classList.remove("hidden");
+        hasError = true;
+      }
+
+      if (hasError) return;
+
+      try {
+        const response = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password })
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          document.getElementById("successMessage").textContent = result.message;
+          document.getElementById("successMessage").classList.remove("hidden");
+        } else {
+          document.getElementById("backendError").textContent = result.message || "Login failed";
+          document.getElementById("backendError").classList.remove("hidden");
+        }
+
+      } catch (error) {
+        document.getElementById("backendError").textContent = "Network error!";
+        document.getElementById("backendError").classList.remove("hidden");
+      }
+    });
+  </script>
+
+<footer class="bg-gray-900 text-white py-10">
+		<div
+			class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+
+			<!-- Column 1: Logo + Description -->
+			<div>
+				<h2 class="text-2xl font-bold mb-3">Guljo</h2>
+				<p class="text-gray-400 text-sm">Your trusted online Teaching lessons</p>
+			</div>
+
+			<!-- Column 2: Useful Links -->
+			<div>
+				<h3 class="text-xl font-semibold mb-3">Quick Links</h3>
+				<ul class="space-y-2 text-gray-300">
+					<li><a th:href="@{api/v1/home}" class="hover:text-white">Home</a></li>
+					<li><a th:href="@{/api/v1/service}" class="hover:text-white">Services</a></li>
+					<li><a th:href="@{/api/v1/about}" class="hover:text-white">About
+							Us</a></li>
+					<li><a th:href="@{/api/v1/contact}" class="hover:text-white">Contact</a></li>
+				</ul>
+			</div>
+
+			<!-- Column 3: Contact Info -->
+			<div>
+				<h3 class="text-xl font-semibold mb-3">Contact Us</h3>
+				<p class="text-gray-300 text-sm">Bangalore, Karnataka</p>
+				<p class="text-gray-300 text-sm">+91 7975733928</p>
+				<p class="text-gray-300 text-sm">guljocare@gmail.com</p>
+			</div>
+		</div>
+
+		<!-- Bottom Bar -->
+		<div
+			class="mt-10 border-t border-gray-700 pt-4 text-center text-sm text-gray-400">
+			<span id="year">© Suman Talukdar</span> Guljo. All rights
+			reserved.
+		</div>
+	</footer>
+</body>
+</html>
